@@ -30,6 +30,9 @@ The site will have links that are always visible that let the user navigate betw
 1. Single Business view: note that there is no nav link to this section; rather, you get there by clicking on the name of a business in the All Businesses section
 
 ## Routes
+- /users
+- /businesses
+- /reviews
 
 ## Stretch
 1. All stretch goals from `auth-replay` are implemented. https://github.com/SEI-ATL-3-8/auth-replay
