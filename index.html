@@ -1,20 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>YIP</title>
     <link rel="stylesheet" href="./style.css">
 </head>
+
+
 <body>
+    <nav id="navBar">
+        <a href="#homePage">Home</a>
+        <a href="#loginPage">Login</a>
+        <a href="#signUp">Sign Up</a>
+        <a href="#logOut">Log Out</a>
+        <a href="#allBusiness">All Business</a>
+        <a href="#profile">Profile</a>
+    </nav>
+
+    <div id="homePage">
+        <h1>What we are</h1>
+        <h2>instruction</h2>
+        <form class="searchbar">
+            <input type="text" placeholder="search">
+            <button type="submit">submit</button>
+        </form>
+        <p id="topBusiness "> Top Reviewed of Businesses</p>
+    </div>
+
+    <div id="signUp">
+        <form id="signUp-form">
+            <input type="name" placeholder="name">
+            <input type="email" placeholder="email">
+            <input type="password" placeholder="password">
+            <button type="submit">submit</button>
+        </form>
+    </div>
+
+    <div id="Login">
+        <form id="login-form">
+            <input type="email" placeholder="email">
+            <input type="password" placeholder="password">
+            <button type="submit">submit</button>
+        </form>
+    </div>
+
+    <div id="listAllBusiness">
+        <form class="searchbar">
+            <input type="text" placeholder="search">
+            <button type="submit">submit</button>
+        </form>
+        <p id="businessContainer">List of business</p>
+    </div>
+
+    <div id="oneBusiness">
+
+        <h2>Business name</h2>
+        <img src="https://www.nytaxreview.com/wp-content/uploads/2020/02/nyc-storefront-vacancy-1200x675.jpg">
+        <p>type</p>
+        <address>address</address>
+        <p>descipt</p>
+
+        <div id="review">
+            <p>review</p>
+        </div>
+        <button id="editBusiness">Edit Business</button>
+        <form id="editBusinessForm">
+            <input type="name">name<br>
+            <input type="url">url<br>
+            <select name="businessType" id="businessType">
+                <option value="retail">retail</option>  
+                <option value="resturant">resturant</option>  
+                <option value="hardware">hardware</option>     
+            </select><br>
+            <textarea name="descipt" id="desciptionInfo" cols="30" rows="10"></textarea>
+            <button>submit</button>
+        </form>
+    </div>
+
+    <div id="userProfile">
+        <p id="UserName">UserName</p>
+        <p>email</p>
+        <div>all own business <button>Edit</button></div>
+        <button id="editUserInfo">Edit User</button>
+        <form id="editUserForm">
+            <input type="userName">name<br>
+            <input type="email">email<br>
+            <input type="password">password<br>
+            <button>submit</button>
+        </form>
+    </div>
 
 
 
-    
     <!-- AXIOS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js " integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin=" anonymous "></script>
 
-    <script src="./main.js"></script>
+    <script src="./main.js "></script>
 </body>
+
 </html>
