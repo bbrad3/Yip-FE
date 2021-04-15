@@ -12,12 +12,12 @@
 
 <body>
     <nav id="navBar">
-        <a class="navLink" id="homeLink" href="#homePage">Home</a>
-        <a class="navLink" id="loginLink" href="#loginPage">Login</a>
-        <a class="navLink" id="signupLink" href="#signUp">Sign Up</a>
-        <a class="navLink" id="logoutLink" href="#logOut">Log Out</a>
-        <a class="navLink" id="showLink" href="#allBusiness">All Business</a>
-        <a class="navLink" id="profileLink" href="#profile">Profile</a>
+        <a class="navLink" id="homeLink" href="#"><img src="./assets/Yip-brand.png" alt="Brand" id=""></a>
+        <a class="navLink" id="loginLink" href="#">Login</a>
+        <a class="navLink" id="signupLink" href="#">Sign Up</a>
+        <a class="navLink" id="logoutLink" href="#">Log Out</a>
+        <a class="navLink" id="showLink" href="#">All Business</a>
+        <a class="navLink" id="profileLink" href="#">Profile</a>
     </nav>
 
     <div class="view" id="home">
@@ -30,32 +30,32 @@
         <p id="topBusiness "> Top Reviewed Businesses</p>
     </div>
 
-    <div class="view" id="signup">
+    <div class="view hidden" id="signup">
         <form id="signupForm">
-            <input type="name" placeholder="name">
-            <input type="email" placeholder="email">
-            <input type="password" placeholder="password">
+            <input id="signupName" type="name" placeholder="name">
+            <input id="signupEmail" type="email" placeholder="email">
+            <input id="signupPassword" type="password" placeholder="password">
             <button type="submit">Sign Up</button>
         </form>
     </div>
 
-    <div class="view" id="login">
+    <div class="view hidden" id="login">
         <form id="loginForm">
-            <input type="email" placeholder="email">
-            <input type="password" placeholder="password">
+            <input id="loginEmail" type="email" placeholder="email">
+            <input id="loginPassword" type="password" placeholder="password">
             <button type="submit">Log In</button>
         </form>
     </div>
 
-    <div class="view" id="allBusinesses">
+    <div class="view hidden" id="allBusinesses">
         <form class="searchBar">
             <input type="text" placeholder="search businesses">
             <button type="submit">Search</button>
         </form>
-        <div id="businessesContainer">List of business</p>
+        <div id="businessesContainer">List of business</div>
     </div>
 
-    <div class="view" id="oneBusiness">
+    <div class="view hidden" id="oneBusiness">
 
         <h2>Business name</h2>
         <p>type</p>
@@ -86,7 +86,7 @@
         </form>
     </div>
 
-    <div class="view" id="profile">
+    <div class="view hidden" id="profile">
         <p id="userName">UserName</p>
         <p id="userEmail">email</p>
         <div>
