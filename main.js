@@ -10,7 +10,18 @@ const loginLink = document.querySelector('#loginLink')
 const signupLink = document.querySelector('#signupLink')
 const logoutLink = document.querySelector('#logoutLink')
 const showLink = document.querySelector('#showLink')
-const profileLink = document.querySelector('#profileLink')
+const profileLink = document.querySelector
+('#profileLink')
+const businessesContainer = document.querySelector('#businessesContainer')
+
+
+const singleBusinessName = document.querySelector('#singleBusinessName')
+const singleBusinessType = document.querySelector('#singleBusinessType')
+const singleBusinessImg = document.querySelector('#singleBusinessImg')
+const singleBusinessDescription = document.querySelector('#singleBusinessDescription')
+const singleBusinessAddress = document.querySelector('#singleBusinessAddress')
+
+
 
 const allViews = document.querySelectorAll('.view')
 const homeView = document.querySelector('#home')
@@ -42,6 +53,7 @@ signupLink.addEventListener('click', () => {
 logoutLink.addEventListener('click', logoutUser)
 showLink.addEventListener('click', () => {
     hideViews()
+    populateCompanies()
     showAllView.classList.remove('hidden')
 })
 profileLink.addEventListener('click', () => {
@@ -104,6 +116,68 @@ function logoutUser() {
 }
 
 // BUSINESS
+ async function populateCompanies() {
+    const response = await axios.get(`${backendUrl}/companies/all`)
+    // console.log(response.data.companies)
+    while(businessesContainer.firstChild){
+        businessesContainer.firstChild.remove()
+    }
+    for(let company of response.data.companies){
+        
+        let businessDiv = document.createElement('div')
+        businessDiv.setAttribute('class', 'businessDiv')
+        businessesContainer.append(businessDiv)
+
+        let businessImg = document.createElement('img')
+        businessImg.setAttribute('class','businessImg')
+        businessImg.setAttribute('src',company.image)
+        businessDiv.append(businessImg)
+
+        let textDiv = document.createElement('div')
+        textDiv.setAttribute('class', 'textDiv')
+        businessDiv.append(textDiv)
+
+        let businessName = document.createElement('h3')
+        businessName.setAttribute('class','businessName')
+        businessName.innerHTML = company.name
+        textDiv.append(businessName)
+
+        let businessType = document.createElement('p')
+        businessType.setAttribute('class','businessType')
+        businessType.innerHTML = company.type
+        textDiv.append(businessType)
+        
+        
+        
+        // let businessRate
+    }
+
+}
+
+businessesContainer.addEventListener('click', async (event)=>{
+    // console.log(event.target.children[1].children[0].innerHTML)
+    console.log(event.target)
+         
+    if(event.target.classList.contains('businessDiv')){
+        const businessName = event.target.children[1].children[0].innerHTML
+        
+        hideViews()
+        showOneView.classList.remove('hidden')
+        editBusinessForm.classList.add('hidden')
+
+        const response = await axios.get(`${backendUrl}/companies/${businessName}`)
+        console.log(response)
+
+        singleBusinessName.innerHTML = response.data.oneCompany.name
+        singleBusinessType.innerHTML = response.data.oneCompany.type
+        singleBusinessImg.setAttribute('src',response.data.oneCompany.image)
+        singleBusinessDescription.innerHTML = response.data.oneCompany.description
+        singleBusinessAddress.innerHTML = response.data.oneCompany.address
+    }
+})
+
+
+
 
 // REUSABLE FUNCTIONS
 function hideViews() {
