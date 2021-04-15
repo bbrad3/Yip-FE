@@ -9,12 +9,15 @@ const morgan = require('morgan')
 // MIDDLEWARE
 app.use(express.json())
 app.use(morgan('dev'))
-app.use((req, res) => { // HOPE THIS WORKS
+app.use((req, res, next) => { // HOPE THIS WORKS
     let userId
     if(localStorage.getItem('userId')){
         userId = localStorage.getItem('userId')
+        req.headers.authorization = userId
+    }else{
+        next()
     }
-    req.headers.authorization = userId
+   
 })
 
 // ROUTES
