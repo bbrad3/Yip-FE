@@ -11,7 +11,6 @@ app.use(express.json())
 app.use(morgan('dev'))
 
 // ROUTES
-
 app.get('/', (req, res) => {
     const filepath = path.join(__dirname, './index.html')
     res.sendFile(filepath)
