@@ -12,84 +12,95 @@
 
 <body>
     <nav id="navBar">
-        <a href="#homePage">Home</a>
-        <a href="#loginPage">Login</a>
-        <a href="#signUp">Sign Up</a>
-        <a href="#logOut">Log Out</a>
-        <a href="#allBusiness">All Business</a>
-        <a href="#profile">Profile</a>
+        <a class="navLink" id="homeLink" href="#homePage">Home</a>
+        <a class="navLink" id="loginLink" href="#loginPage">Login</a>
+        <a class="navLink" id="signupLink" href="#signUp">Sign Up</a>
+        <a class="navLink" id="logoutLink" href="#logOut">Log Out</a>
+        <a class="navLink" id="showLink" href="#allBusiness">All Business</a>
+        <a class="navLink" id="profileLink" href="#profile">Profile</a>
     </nav>
 
-    <div id="homePage">
-        <h1>What we are</h1>
-        <h2>instruction</h2>
-        <form class="searchbar">
-            <input type="text" placeholder="search">
-            <button type="submit">submit</button>
+    <div class="view" id="home">
+        <h1>Welcome to Yip!</h1>
+        <h2>Find local businesses...or post your own for others to find!</h2>
+        <form class="searchBar">
+            <input type="text" placeholder="search businesses">
+            <button type="submit">Search</button>
         </form>
-        <p id="topBusiness "> Top Reviewed of Businesses</p>
+        <p id="topBusiness "> Top Reviewed Businesses</p>
     </div>
 
-    <div id="signUp">
-        <form id="signUp-form">
+    <div class="view" id="signup">
+        <form id="signupForm">
             <input type="name" placeholder="name">
             <input type="email" placeholder="email">
             <input type="password" placeholder="password">
-            <button type="submit">submit</button>
+            <button type="submit">Sign Up</button>
         </form>
     </div>
 
-    <div id="Login">
-        <form id="login-form">
+    <div class="view" id="login">
+        <form id="loginForm">
             <input type="email" placeholder="email">
             <input type="password" placeholder="password">
-            <button type="submit">submit</button>
+            <button type="submit">Log In</button>
         </form>
     </div>
 
-    <div id="listAllBusiness">
-        <form class="searchbar">
-            <input type="text" placeholder="search">
-            <button type="submit">submit</button>
+    <div class="view" id="allBusinesses">
+        <form class="searchBar">
+            <input type="text" placeholder="search businesses">
+            <button type="submit">Search</button>
         </form>
-        <p id="businessContainer">List of business</p>
+        <div id="businessesContainer">List of business</p>
     </div>
 
-    <div id="oneBusiness">
+    <div class="view" id="oneBusiness">
 
         <h2>Business name</h2>
-        <img src="https://www.nytaxreview.com/wp-content/uploads/2020/02/nyc-storefront-vacancy-1200x675.jpg">
         <p>type</p>
+        <img src="https://www.nytaxreview.com/wp-content/uploads/2020/02/nyc-storefront-vacancy-1200x675.jpg">
+        <p>description</p>
         <address>address</address>
-        <p>descipt</p>
 
-        <div id="review">
-            <p>review</p>
+        <div id="reviewContainer">
+            <!-- review divs created in JS -->
+            <div class="review">
+                <header class="reviewRating"></header>
+                <div class="reviewContent"></div>
+            </div>
         </div>
-        <button id="editBusiness">Edit Business</button>
+
+        <button id="editBusinessBtn">Edit Business</button>
+
         <form id="editBusinessForm">
-            <input type="name">name<br>
-            <input type="url">url<br>
+            <input type="text" placeholder="Business name">
+            <input type="url" placeholder="img url">
             <select name="businessType" id="businessType">
-                <option value="retail">retail</option>  
-                <option value="resturant">resturant</option>  
-                <option value="hardware">hardware</option>     
-            </select><br>
-            <textarea name="descipt" id="desciptionInfo" cols="30" rows="10"></textarea>
-            <button>submit</button>
+                <option value="retail">Retail</option>  
+                <option value="resturant">Resturant</option>  
+                <option value="hardware">Hardware</option>     
+            </select>
+            <textarea name="description" id="descriptionInfo" cols="30" rows="10"></textarea>
+            <button type="submit">Submit</button>
         </form>
     </div>
 
-    <div id="userProfile">
-        <p id="UserName">UserName</p>
-        <p>email</p>
-        <div>all own business <button>Edit</button></div>
-        <button id="editUserInfo">Edit User</button>
+    <div class="view" id="profile">
+        <p id="userName">UserName</p>
+        <p id="userEmail">email</p>
+        <div>
+            <!-- user added businesses -->
+            <!-- click div to go to oneBusiness page -->
+        </div>
+
+        <button id="editUserBtn">Edit User</button>
+
         <form id="editUserForm">
-            <input type="userName">name<br>
-            <input type="email">email<br>
-            <input type="password">password<br>
-            <button>submit</button>
+            <input type="text" placeholder="Your name">
+            <input type="email" placeholder="email">
+            <input type="password" placeholder="password">
+            <button type="submit">Submit</button>
         </form>
     </div>
 
