@@ -1,12 +1,10 @@
-* {
-    /* border: 1px solid rgba(96, 95, 95, .5); */
-}
-
 .view {
     border: 1px solid green;
 }
 
+
 /* FORMS */
+
 form {
     border: 1px solid blue;
     width: 50%;
@@ -15,8 +13,12 @@ form {
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    position: relative;
 }
-form input, form select, form textarea {
+
+form input,
+form select,
+form textarea {
     background-color: rgba(222, 222, 222, 0.7);
     color: rgb(65, 65, 65);
     margin-bottom: 10px;
@@ -26,6 +28,7 @@ form input, form select, form textarea {
     width: 60%;
     padding: 10px;
 }
+
 form button {
     background-color: rgb(49, 186, 3);
     width: 100px;
@@ -35,10 +38,14 @@ form button {
     padding: 5px;
 }
 
+
 /* SEARCH BAR */
+
 .searchBar {
     width: 40%;
+    overflow: hidden;
 }
+
 .searchBar input {
     width: 100%;
     padding: 5px;
@@ -51,6 +58,27 @@ body {
 
 img {
     width: 30%;
+}
+
+.viewimgl {
+    width: 1000px;
+    height: 110px;
+    z-index: -1;
+    border: none;
+    position: absolute;
+}
+
+.viewimgl {
+    animation: 10s linear 0s infinite normal none running toleft;
+}
+
+@keyframes toleft {
+    0% {
+        transform: translate(10vw);
+    }
+    100% {
+        transform: translate(-10vw);
+    }
 }
 
 .hidden {
