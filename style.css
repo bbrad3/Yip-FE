@@ -13,6 +13,7 @@ form {
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    position: relative;
 }
 
 form input,
@@ -42,6 +43,7 @@ form button {
 
 .searchBar {
     width: 40%;
+    overflow: hidden;
 }
 
 .searchBar input {
@@ -56,6 +58,27 @@ body {
 
 img {
     width: 30%;
+}
+
+.viewimgl {
+    width: 1000px;
+    height: 110px;
+    z-index: -1;
+    border: none;
+    position: absolute;
+}
+
+.viewimgl {
+    animation: 10s linear 0s infinite normal none running toleft;
+}
+
+@keyframes toleft {
+    0% {
+        transform: translate(10vw);
+    }
+    100% {
+        transform: translate(-10vw);
+    }
 }
 
 .hidden {

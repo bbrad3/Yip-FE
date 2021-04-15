@@ -26,6 +26,7 @@
         <form class="searchBar">
             <input type="text" placeholder="search businesses">
             <button type="submit">Search</button>
+            <img class="viewimgl" src="./pic/Screen Shot 2021-04-15 at 10.31.50 AM.png">
         </form>
         <p id="topBusiness "> Top Reviewed Businesses</p>
     </div>
@@ -53,63 +54,63 @@
             <button type="submit">Search</button>
         </form>
         <div id="businessesContainer">List of business</p>
-    </div>
-
-    <div class="view" id="oneBusiness">
-
-        <h2>Business name</h2>
-        <p>type</p>
-        <img src="https://www.nytaxreview.com/wp-content/uploads/2020/02/nyc-storefront-vacancy-1200x675.jpg">
-        <p>description</p>
-        <address>address</address>
-
-        <div id="reviewContainer">
-            <!-- review divs created in JS -->
-            <div class="review">
-                <header class="reviewRating"></header>
-                <div class="reviewContent"></div>
-            </div>
         </div>
 
-        <button id="editBusinessBtn">Edit Business</button>
+        <div class="view" id="oneBusiness">
 
-        <form id="editBusinessForm">
-            <input type="text" placeholder="Business name">
-            <input type="url" placeholder="img url">
-            <select name="businessType" id="businessType">
+            <h2>Business name</h2>
+            <p>type</p>
+            <img src="https://www.nytaxreview.com/wp-content/uploads/2020/02/nyc-storefront-vacancy-1200x675.jpg">
+            <p>description</p>
+            <address>address</address>
+
+            <div id="reviewContainer">
+                <!-- review divs created in JS -->
+                <div class="review">
+                    <header class="reviewRating"></header>
+                    <div class="reviewContent"></div>
+                </div>
+            </div>
+
+            <button id="editBusinessBtn">Edit Business</button>
+
+            <form id="editBusinessForm">
+                <input type="text" placeholder="Business name">
+                <input type="url" placeholder="img url">
+                <select name="businessType" id="businessType">
                 <option value="retail">Retail</option>  
                 <option value="resturant">Resturant</option>  
                 <option value="hardware">Hardware</option>     
             </select>
-            <textarea name="description" id="descriptionInfo" cols="30" rows="10"></textarea>
-            <button type="submit">Submit</button>
-        </form>
-    </div>
-
-    <div class="view" id="profile">
-        <p id="userName">UserName</p>
-        <p id="userEmail">email</p>
-        <div>
-            <!-- user added businesses -->
-            <!-- click div to go to oneBusiness page -->
+                <textarea name="description" id="descriptionInfo" cols="30" rows="10"></textarea>
+                <button type="submit">Submit</button>
+            </form>
         </div>
 
-        <button id="editUserBtn">Edit User</button>
+        <div class="view" id="profile">
+            <p id="userName">UserName</p>
+            <p id="userEmail">email</p>
+            <div>
+                <!-- user added businesses -->
+                <!-- click div to go to oneBusiness page -->
+            </div>
 
-        <form id="editUserForm">
-            <input type="text" placeholder="Your name">
-            <input type="email" placeholder="email">
-            <input type="password" placeholder="password">
-            <button type="submit">Submit</button>
-        </form>
-    </div>
+            <button id="editUserBtn">Edit User</button>
+
+            <form id="editUserForm">
+                <input type="text" placeholder="Your name">
+                <input type="email" placeholder="email">
+                <input type="password" placeholder="password">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
 
 
 
-    <!-- AXIOS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js " integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin=" anonymous "></script>
+        <!-- AXIOS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js " integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin=" anonymous "></script>
 
-    <script src="./main.js "></script>
+        <script src="./main.js "></script>
 </body>
 
 </html>
