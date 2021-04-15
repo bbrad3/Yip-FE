@@ -4,6 +4,9 @@
 
 body {
     background-color: rgb(215, 252, 240);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 img {
