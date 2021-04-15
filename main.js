@@ -10,18 +10,20 @@ const loginLink = document.querySelector('#loginLink')
 const signupLink = document.querySelector('#signupLink')
 const logoutLink = document.querySelector('#logoutLink')
 const showLink = document.querySelector('#showLink')
-const profileLink = document.querySelector
-('#profileLink')
+const profileLink = document.querySelector('#profileLink')
+
 const businessesContainer = document.querySelector('#businessesContainer')
-
-
 const singleBusinessName = document.querySelector('#singleBusinessName')
 const singleBusinessType = document.querySelector('#singleBusinessType')
 const singleBusinessImg = document.querySelector('#singleBusinessImg')
 const singleBusinessDescription = document.querySelector('#singleBusinessDescription')
 const singleBusinessAddress = document.querySelector('#singleBusinessAddress')
 
-
+const editBusinessName = document.querySelector('#editBusinessName')
+const editBusinessType = document.querySelector('#editBusinessType')
+const editBusinessImg = document.querySelector('#editBusinessImg')
+const editBusinessDesc = document.querySelector('#editBusinessDesc')
+const editBusinessAddress = document.querySelector('#editBusinessAddress')
 
 const allViews = document.querySelectorAll('.view')
 const homeView = document.querySelector('#home')
@@ -34,8 +36,12 @@ const profileView = document.querySelector('#profile')
 const searchBar = document.querySelectorAll('.searchBar')
 const signupForm = document.querySelector('#signupForm')
 const loginForm = document.querySelector('#loginForm')
+const deleteBusinessBtn = document.querySelector('#deleteBusinessBtn')
+const updateBusinessBtn = document.querySelector('#updateBusinessBtn')
+const editBusinessBtn = document.querySelector('#editBusinessBtn')
 const editBusinessForm = document.querySelector('#editBusinessForm')
 const editUserForm = document.querySelector('#editUserForm')
+
 
 // NAV LINKS
 homeLink.addEventListener('click', () => {
@@ -53,12 +59,13 @@ signupLink.addEventListener('click', () => {
 logoutLink.addEventListener('click', logoutUser)
 showLink.addEventListener('click', () => {
     hideViews()
-    populateCompanies()
     showAllView.classList.remove('hidden')
+    populateCompanies()
 })
 profileLink.addEventListener('click', () => {
     hideViews()
     profileView.classList.remove('hidden')
+    populateProfile()
 })
 
 // USER
@@ -75,7 +82,7 @@ loginForm.addEventListener('submit', async (e) => {
         })
         console.log('login response', response.data)
         if(response.status === 200) {
-            localStorage.setItem('userId', response.data.user.id)
+            localStorage.setItem('userId', response.data.userId)
             checkLoggedIn()
             goHome()
         }
@@ -99,7 +106,7 @@ signupForm.addEventListener('submit', async (e) => {
         })
         console.log('signup response', response.data)
         if(response.status === 200) {
-            localStorage.setItem('userId', response.data.user[0].id)
+            localStorage.setItem('userId', response.data.userId)
             checkLoggedIn()
             goHome()
         }
@@ -148,15 +155,15 @@ function logoutUser() {
         textDiv.append(businessType)
         
         
-        
         // let businessRate
     }
 
 }
 
+// --SINGLE BUSINESS
 businessesContainer.addEventListener('click', async (event)=>{
     // console.log(event.target.children[1].children[0].innerHTML)
-    console.log(event.target)
+    // console.log(event.target)
          
     if(event.target.classList.contains('businessDiv')){
         const businessName = event.target.children[1].children[0].innerHTML
@@ -164,20 +171,64 @@ businessesContainer.addEventListener('click', async (event)=>{
         hideViews()
         showOneView.classList.remove('hidden')
         editBusinessForm.classList.add('hidden')
-
+        
         const response = await axios.get(`${backendUrl}/companies/${businessName}`)
         console.log(response)
-
+        
         singleBusinessName.innerHTML = response.data.oneCompany.name
         singleBusinessType.innerHTML = response.data.oneCompany.type
         singleBusinessImg.setAttribute('src',response.data.oneCompany.image)
         singleBusinessDescription.innerHTML = response.data.oneCompany.description
         singleBusinessAddress.innerHTML = response.data.oneCompany.address
+        // if(localStorage.getItem('userId')){
+            fillInEditBusinessForm(response.data.oneCompany)
+            // if userId matches company's userId => show edit button
+        // }
     }
 })
 
+// --EDIT BUSINESS
+function fillInEditBusinessForm(data) {
+    editBusinessBtn.addEventListener('click', () => {
+        editBusinessForm.classList.remove('hidden')
+    
+        editBusinessName.value = data.name
+        editBusinessType.value = data.type
+        editBusinessImg.value = data.image
+        editBusinessDesc.value = data.description
+        editBusinessAddress.value = data.address
 
+        updateBusinessBtn.addEventListener('click', async (e) => {
+            e.preventDefault()
+            const response = await axios.put(`${backendUrl}/companies/update`, {
+                id: data.id,
+                name: editBusinessName.value,
+                type: editBusinessType.value,
+                image: editBusinessImg.value,
+                description: editBusinessDesc.value,
+                address:editBusinessAddress.value
+            })
+            console.log('UPDATE BUSINESS RESPONSE', response)
+        })
+        deleteBusinessBtn.addEventListener('click', async (e) => {
+            e.preventDefault()
+            const response = await axios.delete(`${backendUrl}/companies/delete/${data.id}`)
+            console.log('DELETE COMPANY RESPONSE', response);
+        })
+    })
+}
 
+// PROFILE
+// --READ
+async function populateProfile() {
+    const userId = localStorage.getItem('userId')
+    const response = await axios.get(`${backendUrl}/users/findOne`, {
+        headers: {
+            authorization: userId
+        }
+    })
+    console.log(response);
+}
 
 // REUSABLE FUNCTIONS
 function hideViews() {

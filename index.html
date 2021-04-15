@@ -71,18 +71,20 @@
             </div>
         </div>
 
-        <button id="editBusinessBtn">Edit Business</button>
+        <button class="" id="editBusinessBtn">Edit Business</button>
 
         <form id="editBusinessForm">
-            <input type="text" placeholder="Business name">
-            <input type="url" placeholder="img url">
-            <select name="businessType" id="businessType">
+            <input id="editBusinessName" type="text" placeholder="Business name">
+            <input id="editBusinessImg" type="url" placeholder="img url">
+            <select name="businessType" id="editBusinessType">
                 <option value="retail">Retail</option>  
                 <option value="resturant">Resturant</option>  
                 <option value="hardware">Hardware</option>     
             </select>
-            <textarea name="description" id="descriptionInfo" cols="30" rows="10"></textarea>
-            <button type="submit">Submit</button>
+            <input id="editBusinessAddress" type="text" placeholder="address">
+            <textarea id="editBusinessDesc" name="description" id="descriptionInfo" cols="30" rows="10"></textarea>
+            <button class="deleteBtn" id="deleteBusinessBtn">Delete</button>
+            <button id="updateBusinessBtn" type="submit">Submit</button>
         </form>
     </div>
 
