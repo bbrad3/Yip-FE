@@ -1,46 +1,70 @@
-* {
-    /* border: 1px solid rgba(96, 95, 95, .5); */
+body {
+    text-align: center;
+    font-family: 'Montserrat Alternates', sans-serif;
 }
 
-.view {
-    border: 1px solid green;
+#home {
+    border-radius: 1rem;
 }
+
+
+/* .view {
+    border: 1px solid green;
+} */
+
 
 /* FORMS */
+
 form {
-    border: 1px solid blue;
-    width: 50%;
+    width: 200px;
+    height: 250px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
-}
-form input, form select, form textarea {
-    background-color: rgba(222, 222, 222, 0.7);
-    color: rgb(65, 65, 65);
-    margin-bottom: 10px;
-    text-align: center;
-    border: none;
-    border-radius: 1rem;
-    width: 60%;
-    padding: 10px;
-}
-form button {
-    background-color: rgb(49, 186, 3);
-    width: 100px;
-    border: none;
-    border-radius: 1rem;
-    margin-top: 10px;
-    padding: 5px;
+    padding: 0px;
+    position: relative;
 }
 
-/* SEARCH BAR */
-.searchBar {
-    width: 40%;
+form input,
+form select,
+form textarea {
+    background-color: white;
+    opacity: .7;
+    color: rgb(65, 65, 65);
+    margin-top: 80px;
+    text-align: center;
+    border: none;
+    width: 80%;
+    padding: 10px;
 }
+
+button {
+    background-color: #B200ff;
+    width: 100px;
+    border: none;
+    margin-top: 15px;
+    padding: 5px;
+    text-decoration: none;
+    transition: all .2s;
+    position: relative;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px;
+}
+
+
+/* SEARCH BAR */
+
+.searchBar {
+    width: 50%;
+    overflow: hidden;
+}
+
 .searchBar input {
-    width: 100%;
+    width: 400px;
     padding: 5px;
     font-size: 1.5rem;
 }
@@ -53,6 +77,70 @@ img {
     width: 30%;
 }
 
+.viewimgl {
+    width: 1000px;
+    height: 110px;
+    z-index: -1;
+    border: none;
+    position: absolute;
+}
+
+.viewimgl {
+    animation: 10s linear 0s infinite normal none running toleft;
+}
+
 .hidden {
     display: none;
+}
+
+#myVideo {
+    position: absolute;
+    z-index: -1;
+    width: 500px;
+}
+
+#welcome {
+    animation-name: moveinleft;
+    animation-duration: 3s;
+    backface-visibility: hidden;
+}
+
+#welcome1 {
+    animation-name: moveinright;
+    animation-duration: 3s;
+    backface-visibility: hidden;
+}
+
+@keyframes moveinleft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    80% {
+        transform: translateX(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveinright {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    80% {
+        transform: translateX(-5px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.navLink {
+    text-decoration: none;
+    color: rgb(65, 65, 65);
+    margin: 5px;
 }
