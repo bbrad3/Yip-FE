@@ -169,8 +169,6 @@ async function populateCompanies() {
         businessType.innerHTML = company.type
         textDiv.append(businessType)
 
-
-        // let businessRate
     }
 
 }
@@ -199,20 +197,40 @@ businessesContainer.addEventListener('click', async(event) => {
         fillInEditBusinessForm(response.data.oneCompany)
             // if userId matches company's userId => show edit button
             // }
-
+        checkAuthorization(false)
         populateReviews(response.data.foundReview)
         newReview(response.data.oneCompany.id)
-
-
     }
 
 })
+async function checkAuthorization(company) {
+    const userId = localStorage.getItem('userId')
+    console.log(userId);
+    let response = null
 
+    if(company !== false && userId.length > 20) { // only run if user is logged in properly && company not false
+        console.log('not null', userId, company);
+        response = await axios.get(`${backendUrl}/users/findOne`, {
+            headers: {
+                authorization: userId
+            }
+        })
+        // console.log('checkAuth response', response.data.user.id, company.userId);
+        if(company.userId === response.data.user.id && userId !== null){
+            console.log('super nested');
+            editBusinessBtn.classList.remove('hidden')
+        }
+    }
+    if(userId.length > 20 && company === false) { // !== null/undefined was not working
+        console.log('here', company)
+        document.querySelector('#reviewForm').classList.remove('hidden')
+    }
+}
 // --EDIT BUSINESS
 function fillInEditBusinessForm(data) {
+    checkAuthorization(data)
     editBusinessBtn.addEventListener('click', () => {
         editBusinessForm.classList.remove('hidden')
-
         editBusinessName.value = data.name
         editBusinessType.value = data.type
         editBusinessImg.value = data.image

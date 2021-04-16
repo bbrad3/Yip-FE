@@ -73,7 +73,8 @@
         <img id='singleBusinessImg' src="https://www.nytaxreview.com/wp-content/uploads/2020/02/nyc-storefront-vacancy-1200x675.jpg">
         <p id='singleBusinessDescription'>description</p>
         <address id='singleBusinessAddress'>address</address>
-        <form id="reviewForm">
+
+        <form class="hidden" id="reviewForm">
             <input id="reviewContentInput" type='text' cols='20' rows='10'>
             <select id="reviewRatingInput" name='reviewRatingInput'>
                 <option value="1">1</option>    
@@ -84,6 +85,7 @@
             </select>
             <button class="" id="reviewSubmitBtn">submit</button>
         </form>
+
         <div id="reviewContainer">
             <!-- review divs created in JS -->
             <div class="review">
@@ -92,7 +94,7 @@
             </div>
         </div>
 
-        <button class="" id="editBusinessBtn">Edit Business</button>
+        <button class="hidden" id="editBusinessBtn">Edit Business</button>
 
         <form id="editBusinessForm">
             <input id="editBusinessName" type="text" placeholder="Business name">
