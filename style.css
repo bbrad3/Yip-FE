@@ -1,6 +1,15 @@
 body {
     text-align: center;
-    font-family: 'Montserrat Alternates', sans-serif;
+    font-family: 'Work Sans', sans-serif;
+    background-color: rgb(245, 245, 245);
+}
+
+#signupForm {
+    background-color: rgba(201, 201, 201, 0.619);
+}
+
+#signupPassword {
+    background-color: rgba(201, 201, 201, 0.619);
 }
 
 #navBar {
@@ -9,11 +18,12 @@ body {
     height: 80px;
     align-items: center;
     justify-content: space-between;
+    position: sticky;
 }
 
 #logodiv {
     width: 100px;
-    height: 80px;
+    height: 70px;
     position: relative;
 }
 
@@ -96,21 +106,17 @@ body {
     background-color: rgb(254, 251, 246);
 }
 
+#white {
+    color: transparent;
+}
+
 
 /* img {
     width: 30%;
 } */
 
-.viewimgl {
-    width: 1000px;
-    height: 110px;
-    z-index: -1;
-    border: none;
-    position: absolute;
-}
-
-.viewimgl {
-    animation: 10s linear 0s infinite normal none running toleft;
+#welcometo {
+    width: 150px;
 }
 
 .hidden {
@@ -123,16 +129,23 @@ body {
     width: 95%;
 }
 
+#myVideo1 {
+    position: absolute;
+    z-index: -1;
+    width: 95%;
+}
+
 #welcome {
     animation-name: moveinleft;
-    animation-duration: 3s;
+    animation-duration: 2s;
     backface-visibility: hidden;
 }
 
 #welcome1 {
     animation-name: moveinright;
-    animation-duration: 3s;
+    animation-duration: 2s;
     backface-visibility: hidden;
+    width: 200px;
 }
 
 @keyframes moveinleft {
@@ -163,9 +176,8 @@ body {
     }
 }
 
-
-/* .navLink {
+.navLink {
     text-decoration: none;
     color: rgb(65, 65, 65);
     margin: 5px;
-} */
+}
