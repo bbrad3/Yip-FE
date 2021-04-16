@@ -3,12 +3,33 @@ body {
     font-family: 'Montserrat Alternates', sans-serif;
 }
 
+#navBar {
+    display: flex;
+    width: 100%;
+    height: 80px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#logodiv {
+    width: 100px;
+    height: 80px;
+    position: relative;
+}
+
+#homeLinks {
+    height: 100%;
+    object-fit: contain;
+}
+
 #home {
     border-radius: 1rem;
 }
-#reviewForm{
+
+#reviewForm {
     margin-bottom: 10px;
-    }
+}
+
 
 /* .view {
     border: 1px solid green;
@@ -61,12 +82,12 @@ button:hover {
 /* SEARCH BAR */
 
 .searchBar {
-    width: 50%;
+    width: 100%;
     overflow: hidden;
 }
 
 .searchBar input {
-    width: 400px;
+    width: 90%;
     padding: 5px;
     font-size: 1.5rem;
 }
@@ -75,9 +96,10 @@ body {
     background-color: rgb(254, 251, 246);
 }
 
-img {
+
+/* img {
     width: 30%;
-}
+} */
 
 .viewimgl {
     width: 1000px;
@@ -98,7 +120,7 @@ img {
 #myVideo {
     position: absolute;
     z-index: -1;
-    width: 500px;
+    width: 95%;
 }
 
 #welcome {
@@ -141,8 +163,9 @@ img {
     }
 }
 
-.navLink {
+
+/* .navLink {
     text-decoration: none;
     color: rgb(65, 65, 65);
     margin: 5px;
-}
+} */

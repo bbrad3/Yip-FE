@@ -52,6 +52,7 @@ const editBusinessForm = document.querySelector('#editBusinessForm')
 const editUserForm = document.querySelector('#editUserForm')
 const editUserBtn = document.querySelector('#editUserBtn')
 const reviewSubmitBtn = document.querySelector('#reviewSubmitBtn')
+const addBusiness = document.querySelector('#addBusiness')
 
 
 const reviewContainer = document.querySelector('#reviewContainer')
@@ -238,6 +239,31 @@ function fillInEditBusinessForm(data) {
     })
 }
 
+
+//---Create Business---//
+
+addBusiness.addEventListener('click', () => {
+    document.querySelector('#newBusinessForm').classList.remove('hidden')
+})
+
+document.getElementById('newBusinessBtn').addEventListener('click', async() => {
+
+    const userId = localStorage.getItem('userId')
+
+    const response = await axios.post(`${backendUrl}/companies/new/${userId}`, {
+
+        name: newBusinessName.value,
+        type: newBusinessType.value,
+        image: newBusinessImg.value,
+        description: newBusinessDesc.value,
+        address: newBusinessAddress.value
+    })
+    console.log(response, 'you have created a business');
+
+
+})
+
+
 // PROFILE
 // --READ
 async function populateProfile() {
@@ -308,18 +334,18 @@ function populateReviews(reviews) {
 
 }
 
- function newReview(companyId) { 
-    reviewSubmitBtn.addEventListener('click', async (e) => {
+function newReview(companyId) {
+    reviewSubmitBtn.addEventListener('click', async(e) => {
         e.preventDefault()
         const reviewContentInput = document.querySelector('#reviewContentInput')
-        const reviewRatingInput =document.querySelector('#reviewRatingInput')
+        const reviewRatingInput = document.querySelector('#reviewRatingInput')
         const userId = await localStorage.getItem('userId')
-        const response = await axios.post(`${backendUrl}/reviews/${companyId}/create/${userId}`,{
+        const response = await axios.post(`${backendUrl}/reviews/${companyId}/create/${userId}`, {
             rating: reviewRatingInput.value,
             content: reviewContentInput.value
 
         })
-        console.log(response,"newReview works!")
+        console.log(response, "newReview works!")
     })
 }
 
