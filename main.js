@@ -25,6 +25,15 @@ const editBusinessImg = document.querySelector('#editBusinessImg')
 const editBusinessDesc = document.querySelector('#editBusinessDesc')
 const editBusinessAddress = document.querySelector('#editBusinessAddress')
 
+const userName = document.querySelector('#userName')
+const userEmail = document.querySelector('#userEmail')
+
+const editUserName = document.querySelector('#editUserName')
+const editUserEmail = document.querySelector('#editUserEmail')
+const editUserPassword = document.querySelector('#editUserPassword')
+const editProfileBtn = document.querySelector('#editProfileBtn')
+const deleteProfileBtn = document.querySelector('#deleteProfileBtn')
+
 const allViews = document.querySelectorAll('.view')
 const homeView = document.querySelector('#home')
 const signupView = document.querySelector('#signup')
@@ -41,6 +50,7 @@ const updateBusinessBtn = document.querySelector('#updateBusinessBtn')
 const editBusinessBtn = document.querySelector('#editBusinessBtn')
 const editBusinessForm = document.querySelector('#editBusinessForm')
 const editUserForm = document.querySelector('#editUserForm')
+const editUserBtn = document.querySelector('#editUserBtn')
 
 
 // NAV LINKS
@@ -70,7 +80,7 @@ profileLink.addEventListener('click', () => {
 
 // USER
 // --LOGIN
-loginForm.addEventListener('submit', async (e) => {
+loginForm.addEventListener('submit', async(e) => {
     e.preventDefault()
     try {
         const email = document.querySelector('#loginEmail').value
@@ -81,7 +91,7 @@ loginForm.addEventListener('submit', async (e) => {
             password: password
         })
         console.log('login response', response.data)
-        if(response.status === 200) {
+        if (response.status === 200) {
             localStorage.setItem('userId', response.data.userId)
             checkLoggedIn()
             goHome()
@@ -92,7 +102,7 @@ loginForm.addEventListener('submit', async (e) => {
 })
 
 // --SIGNUP
-signupForm.addEventListener('submit', async (e) => {
+signupForm.addEventListener('submit', async(e) => {
     e.preventDefault()
     try {
         const name = document.querySelector('#signupName').value
@@ -105,7 +115,7 @@ signupForm.addEventListener('submit', async (e) => {
             password: password
         })
         console.log('signup response', response.data)
-        if(response.status === 200) {
+        if (response.status === 200) {
             localStorage.setItem('userId', response.data.userId)
             checkLoggedIn()
             goHome()
@@ -123,21 +133,21 @@ function logoutUser() {
 }
 
 // BUSINESS
- async function populateCompanies() {
+async function populateCompanies() {
     const response = await axios.get(`${backendUrl}/companies/all`)
-    // console.log(response.data.companies)
-    while(businessesContainer.firstChild){
+    console.log(response.data.companies)
+    while (businessesContainer.firstChild) {
         businessesContainer.firstChild.remove()
     }
-    for(let company of response.data.companies){
-        
+    for (let company of response.data.companies) {
+
         let businessDiv = document.createElement('div')
         businessDiv.setAttribute('class', 'businessDiv')
         businessesContainer.append(businessDiv)
 
         let businessImg = document.createElement('img')
-        businessImg.setAttribute('class','businessImg')
-        businessImg.setAttribute('src',company.image)
+        businessImg.setAttribute('class', 'businessImg')
+        businessImg.setAttribute('src', company.image)
         businessDiv.append(businessImg)
 
         let textDiv = document.createElement('div')
@@ -145,45 +155,45 @@ function logoutUser() {
         businessDiv.append(textDiv)
 
         let businessName = document.createElement('h3')
-        businessName.setAttribute('class','businessName')
+        businessName.setAttribute('class', 'businessName')
         businessName.innerHTML = company.name
         textDiv.append(businessName)
 
         let businessType = document.createElement('p')
-        businessType.setAttribute('class','businessType')
+        businessType.setAttribute('class', 'businessType')
         businessType.innerHTML = company.type
         textDiv.append(businessType)
-        
-        
+
+
         // let businessRate
     }
 
 }
 
 // --SINGLE BUSINESS
-businessesContainer.addEventListener('click', async (event)=>{
+businessesContainer.addEventListener('click', async(event) => {
     // console.log(event.target.children[1].children[0].innerHTML)
     // console.log(event.target)
-         
-    if(event.target.classList.contains('businessDiv')){
+
+    if (event.target.classList.contains('businessDiv')) {
         const businessName = event.target.children[1].children[0].innerHTML
-        
+
         hideViews()
         showOneView.classList.remove('hidden')
         editBusinessForm.classList.add('hidden')
-        
+
         const response = await axios.get(`${backendUrl}/companies/${businessName}`)
         console.log(response)
-        
+
         singleBusinessName.innerHTML = response.data.oneCompany.name
         singleBusinessType.innerHTML = response.data.oneCompany.type
-        singleBusinessImg.setAttribute('src',response.data.oneCompany.image)
+        singleBusinessImg.setAttribute('src', response.data.oneCompany.image)
         singleBusinessDescription.innerHTML = response.data.oneCompany.description
         singleBusinessAddress.innerHTML = response.data.oneCompany.address
-        // if(localStorage.getItem('userId')){
-            fillInEditBusinessForm(response.data.oneCompany)
+            // if(localStorage.getItem('userId')){
+        fillInEditBusinessForm(response.data.oneCompany)
             // if userId matches company's userId => show edit button
-        // }
+            // }
     }
 })
 
@@ -191,14 +201,14 @@ businessesContainer.addEventListener('click', async (event)=>{
 function fillInEditBusinessForm(data) {
     editBusinessBtn.addEventListener('click', () => {
         editBusinessForm.classList.remove('hidden')
-    
+
         editBusinessName.value = data.name
         editBusinessType.value = data.type
         editBusinessImg.value = data.image
         editBusinessDesc.value = data.description
         editBusinessAddress.value = data.address
 
-        updateBusinessBtn.addEventListener('click', async (e) => {
+        updateBusinessBtn.addEventListener('click', async(e) => {
             e.preventDefault()
             const response = await axios.put(`${backendUrl}/companies/update`, {
                 id: data.id,
@@ -206,11 +216,11 @@ function fillInEditBusinessForm(data) {
                 type: editBusinessType.value,
                 image: editBusinessImg.value,
                 description: editBusinessDesc.value,
-                address:editBusinessAddress.value
+                address: editBusinessAddress.value
             })
             console.log('UPDATE BUSINESS RESPONSE', response)
         })
-        deleteBusinessBtn.addEventListener('click', async (e) => {
+        deleteBusinessBtn.addEventListener('click', async(e) => {
             e.preventDefault()
             const response = await axios.delete(`${backendUrl}/companies/delete/${data.id}`)
             console.log('DELETE COMPANY RESPONSE', response);
@@ -227,8 +237,42 @@ async function populateProfile() {
             authorization: userId
         }
     })
-    console.log(response); 
+    // console.log(response);
+    userEmail.innerHTML = response.data.user.email
+    userName.innerHTML = response.data.user.name
 }
+
+// --UPDATE
+editUserBtn.addEventListener('click', () =>{
+     
+    editUserForm.classList.remove('hidden')
+    const userId = localStorage.getItem('userId')
+
+    editProfileBtn.addEventListener("click",async (e) =>{
+        e.preventDefault()
+           
+        try {
+            const response = await axios.post(`${backendUrl}/users/update/${userId}`,{
+                name: editUserName.value,
+                email: editUserEmail.value,
+                password: editUserPassword.value  
+            }) 
+                console.log(response)
+            } catch (error) {
+                console.log(error)
+            }
+    })
+    // --DELETE
+    deleteProfileBtn.addEventListener('click',async (e)=>{
+        e.preventDefault()
+        
+        const response = await axios.delete(`${backendUrl}/users/delete/${userId}`)
+        console.log(response,"Deleted")
+        goHome()
+        localStorage.removeItem('userId')
+        checkLoggedIn()
+    })   
+})
 
 // REUSABLE FUNCTIONS
 function hideViews() {
@@ -243,7 +287,7 @@ function goHome() {
 }
 
 function checkLoggedIn() {
-    if(localStorage.getItem('userId')) {
+    if (localStorage.getItem('userId')) {
         loginLink.classList.add('hidden')
         signupLink.classList.add('hidden')
         logoutLink.classList.remove('hidden')
