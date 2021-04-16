@@ -5,9 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,300;1,200&display=swap" rel="stylesheet">
     <title>YIP</title>
     <link rel="stylesheet" href="./style.css">
 </head>
@@ -24,17 +21,13 @@
     </nav>
 
     <div class="view" id="home">
-        <h1 id="welcome">Welcome to</h1>
-        <p id="welcome1"><img src="./assets/planning/YIPLOGO.png">
-
-            <form class="searchBar">
-                <input type="text" placeholder="search businesses">
-                <button type="submit">Search</button>
-                <video autoplay muted loop id="myVideo">
-                <source src="./video.mp4" type="video/mp4">
-              </video>
-            </form>
-            <p id="topBusiness "> Top Reviewed Businesses</p>
+        <h1>Welcome to Yip!</h1>
+        <h2>Find local businesses...or post your own for others to find!</h2>
+        <form class="searchBar">
+            <input type="text" placeholder="search businesses">
+            <button type="submit">Search</button>
+        </form>
+        <p id="topBusiness "> Top Reviewed Businesses</p>
     </div>
 
     <div class="view hidden" id="signup">
@@ -59,37 +52,24 @@
             <input type="text" placeholder="search businesses">
             <button type="submit">Search</button>
         </form>
-
-
-     
-
-        <div class="view" id="oneBusiness">
-
-            <h2>Business name</h2>
-            <p>type</p>
-            <img src="https://www.nytaxreview.com/wp-content/uploads/2020/02/nyc-storefront-vacancy-1200x675.jpg">
-            <p>description</p>
-            <address>address</address>
-
         <div id="businessesContainer">List of business</div>
     </div>
 
     <div class="view hidden" id="oneBusiness">
 
-        <h2 id ='singleBusinessName'>Business name</h2>
-        <p id ='singleBusinessType'>type</p>
-        <img  id ='singleBusinessImg'src="https://www.nytaxreview.com/wp-content/uploads/2020/02/nyc-storefront-vacancy-1200x675.jpg">
-        <p id ='singleBusinessDescription'>description</p>
-        <address id ='singleBusinessAddress'>address</address>
+        <h2 id='singleBusinessName'>Business name</h2>
+        <p id='singleBusinessType'>type</p>
+        <img id='singleBusinessImg' src="https://www.nytaxreview.com/wp-content/uploads/2020/02/nyc-storefront-vacancy-1200x675.jpg">
+        <p id='singleBusinessDescription'>description</p>
+        <address id='singleBusinessAddress'>address</address>
 
-
-            <div id="reviewContainer">
-                <!-- review divs created in JS -->
-                <div class="review">
-                    <header class="reviewRating"></header>
-                    <div class="reviewContent"></div>
-                </div>
+        <div id="reviewContainer">
+            <!-- review divs created in JS -->
+            <div class="review">
+                <header class="reviewRating"></header>
+                <div class="reviewContent"></div>
             </div>
+        </div>
 
         <button class="" id="editBusinessBtn">Edit Business</button>
 
@@ -97,12 +77,10 @@
             <input id="editBusinessName" type="text" placeholder="Business name">
             <input id="editBusinessImg" type="url" placeholder="img url">
             <select name="businessType" id="editBusinessType">
-
                 <option value="retail">Retail</option>  
                 <option value="resturant">Resturant</option>  
                 <option value="hardware">Hardware</option>     
             </select>
-
             <input id="editBusinessAddress" type="text" placeholder="address">
             <textarea id="editBusinessDesc" name="description" id="descriptionInfo" cols="30" rows="10"></textarea>
             <button class="deleteBtn" id="deleteBusinessBtn">Delete</button>
@@ -116,33 +94,24 @@
         <div>
             <!-- user added businesses -->
             <!-- click div to go to oneBusiness page -->
-
         </div>
 
-        <div class="view" id="profile">
-            <p id="userName">UserName</p>
-            <p id="userEmail">email</p>
-            <div>
-                <!-- user added businesses -->
-                <!-- click div to go to oneBusiness page -->
-            </div>
+        <button id="editUserBtn">Edit User</button>
 
-            <button id="editUserBtn">Edit User</button>
-
-            <form id="editUserForm">
-                <input type="text" placeholder="Your name">
-                <input type="email" placeholder="email">
-                <input type="password" placeholder="password">
-                <button type="submit">Submit</button>
-            </form>
-        </div>
+        <form id="editUserForm">
+            <input type="text" placeholder="Your name">
+            <input type="email" placeholder="email">
+            <input type="password" placeholder="password">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 
 
 
-        <!-- AXIOS -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js " integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin=" anonymous "></script>
+    <!-- AXIOS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js " integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin=" anonymous "></script>
 
-        <script src="./main.js "></script>
+    <script src="./main.js "></script>
 </body>
 
 </html>
