@@ -11,22 +11,33 @@
 
 
 <body>
+
     <nav id="navBar">
-        <a class="navLink" id="homeLink" href="#"><img src="./assets/Yip-brand.png" alt="Brand" id=""></a>
-        <a class="navLink" id="loginLink" href="#">Login</a>
-        <a class="navLink" id="signupLink" href="#">Sign Up</a>
-        <a class="navLink" id="logoutLink" href="#">Log Out</a>
-        <a class="navLink" id="showLink" href="#">All Business</a>
-        <a class="navLink" id="profileLink" href="#">Profile</a>
+        <div id="logodiv">
+            <!-- <a class="navLink" id="homeLink" href="#"> -->
+            <img class="navLink" id="homeLinks" src="./assets/Yip-brand.png" alt="Brand">
+        </div>
+        <div id="newnav">
+            <a class="navLink" id="homeLink" href="#">Home</a>
+            <a class="navLink" id="loginLink" href="#">Login</a>
+            <a class="navLink" id="signupLink" href="#">Sign Up</a>
+            <a class="navLink" id="logoutLink" href="#">Log Out</a>
+            <a class="navLink" id="showLink" href="#">All Business</a>
+            <a class="navLink" id="profileLink" href="#">Profile</a>
+        </div>
     </nav>
 
     <div class="view" id="home">
         <h1>Welcome to Yip!</h1>
         <h2>Find local businesses...or post your own for others to find!</h2>
+
         <form class="searchBar">
             <input type="text" placeholder="search businesses">
             <button type="submit">Search</button>
+            <video autoplay muted loop id="myVideo">
+                <source src="./video.mp4" type="video/mp4"></video>
         </form>
+
         <p id="topBusiness "> Top Reviewed Businesses</p>
     </div>
 
@@ -62,9 +73,9 @@
         <img id='singleBusinessImg' src="https://www.nytaxreview.com/wp-content/uploads/2020/02/nyc-storefront-vacancy-1200x675.jpg">
         <p id='singleBusinessDescription'>description</p>
         <address id='singleBusinessAddress'>address</address>
-        <form id ="reviewForm">
-            <input  id ="reviewContentInput"type='text' cols = '20' rows = '10'>
-            <select id="reviewRatingInput" name ='reviewRatingInput'>
+        <form id="reviewForm">
+            <input id="reviewContentInput" type='text' cols='20' rows='10'>
+            <select id="reviewRatingInput" name='reviewRatingInput'>
                 <option value="1">1</option>    
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -99,23 +110,37 @@
     </div>
 
     <div class="view hidden" id="profile">
-        <label class ='profileLable'>Name:</label>
+        <label class='profileLable'>Name:</label>
         <p id="userName">UserName</p>
-        <label class ='profileLable'>E-mail:</label>
+        <label class='profileLable'>E-mail:</label>
         <p id="userEmail">email</p>
         <div>
             <!-- user added businesses -->
             <!-- click div to go to oneBusiness page -->
         </div>
 
-        <button id="editUserBtn">Edit User</button>
+        <button id="editUserBtn">Edit User</button><br>
+        <button id="addBusiness">Add Your Business!</button>
+        <form id="newBusinessForm" class="hidden">
+            <input id="newBusinessName" type="text" placeholder="Business name">
+            <input id="newBusinessImg" type="url" placeholder="img url">
+            <select name="businessType" id="newBusinessType">
+                <option value="retail">Retail</option>  
+                <option value="resturant">Resturant</option>  
+                <option value="hardware">Hardware</option>     
+            </select>
+            <input id="newBusinessAddress" type="text" placeholder="address">
+            <textarea id="newBusinessDesc" name="description" id="descriptionInfo" cols="30" rows="10"></textarea>
+            <button id="newBusinessBtn" type="submit">Submit</button>
+        </form>
 
-        <form  class =' hidden' id="editUserForm">
-            <input  id="editUserName" type="text" placeholder="Your name">
-            <input  id="editUserEmail" type="email" placeholder="email">
-            <input  id="editUserPassword" type="password" placeholder="password">
-            <button id ="editProfileBtn">Submit</button>
-            <button id ="deleteProfileBtn">Delete</button>
+
+        <form class=' hidden' id="editUserForm">
+            <input id="editUserName" type="text" placeholder="Your name">
+            <input id="editUserEmail" type="email" placeholder="email">
+            <input id="editUserPassword" type="password" placeholder="password">
+            <button id="editProfileBtn">Submit</button>
+            <button id="deleteProfileBtn">Delete</button>
         </form>
     </div>
 
