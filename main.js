@@ -53,6 +53,9 @@ const editUserForm = document.querySelector('#editUserForm')
 const editUserBtn = document.querySelector('#editUserBtn')
 
 
+const reviewContainer = document.querySelector('#reviewContainer')
+
+
 // NAV LINKS
 homeLink.addEventListener('click', () => {
     hideViews()
@@ -194,7 +197,11 @@ businessesContainer.addEventListener('click', async(event) => {
         fillInEditBusinessForm(response.data.oneCompany)
             // if userId matches company's userId => show edit button
             // }
+
+        populateReviews(response.data.foundReview)
+
     }
+
 })
 
 // --EDIT BUSINESS
@@ -233,46 +240,71 @@ function fillInEditBusinessForm(data) {
 async function populateProfile() {
     const userId = localStorage.getItem('userId')
     const response = await axios.get(`${backendUrl}/users/findOne`, {
-        headers: {
-            authorization: userId
-        }
-    })
-    // console.log(response);
+            headers: {
+                authorization: userId
+            }
+        })
+        // console.log(response);
     userEmail.innerHTML = response.data.user.email
     userName.innerHTML = response.data.user.name
 }
 
 // --UPDATE
-editUserBtn.addEventListener('click', () =>{
-     
+editUserBtn.addEventListener('click', () => {
+
     editUserForm.classList.remove('hidden')
     const userId = localStorage.getItem('userId')
 
-    editProfileBtn.addEventListener("click",async (e) =>{
-        e.preventDefault()
-           
-        try {
-            const response = await axios.post(`${backendUrl}/users/update/${userId}`,{
-                name: editUserName.value,
-                email: editUserEmail.value,
-                password: editUserPassword.value  
-            }) 
+    editProfileBtn.addEventListener("click", async(e) => {
+            e.preventDefault()
+
+            try {
+                const response = await axios.post(`${backendUrl}/users/update/${userId}`, {
+                    name: editUserName.value,
+                    email: editUserEmail.value,
+                    password: editUserPassword.value
+                })
                 console.log(response)
             } catch (error) {
                 console.log(error)
             }
-    })
-    // --DELETE
-    deleteProfileBtn.addEventListener('click',async (e)=>{
+        })
+        // --DELETE
+    deleteProfileBtn.addEventListener('click', async(e) => {
         e.preventDefault()
-        
+
         const response = await axios.delete(`${backendUrl}/users/delete/${userId}`)
-        console.log(response,"Deleted")
+        console.log(response, "Deleted")
         goHome()
         localStorage.removeItem('userId')
         checkLoggedIn()
-    })   
+    })
 })
+
+
+//-- Business Reviews --//
+
+function populateReviews(reviews) {
+    reviews.forEach(rev => {
+        const div = document.createElement('div')
+        div.classList.add('reviewDiv')
+        reviewContainer.append(div)
+
+        const rating = document.createElement('p')
+        rating.classList.add("reviewRating")
+        div.innerHTML = rev.rating
+        div.append(rating)
+
+        const content = document.createElement('p')
+        content.classList.add('reviewContent')
+        content.innerHTML = rev.content
+        div.append(content)
+
+    })
+
+
+}
+
 
 // REUSABLE FUNCTIONS
 function hideViews() {
