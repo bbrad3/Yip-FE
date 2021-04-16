@@ -51,6 +51,7 @@ const editBusinessBtn = document.querySelector('#editBusinessBtn')
 const editBusinessForm = document.querySelector('#editBusinessForm')
 const editUserForm = document.querySelector('#editUserForm')
 const editUserBtn = document.querySelector('#editUserBtn')
+const reviewSubmitBtn = document.querySelector('#reviewSubmitBtn')
 
 
 const reviewContainer = document.querySelector('#reviewContainer')
@@ -199,6 +200,8 @@ businessesContainer.addEventListener('click', async(event) => {
             // }
 
         populateReviews(response.data.foundReview)
+        newReview(response.data.oneCompany.id)
+
 
     }
 
@@ -305,6 +308,20 @@ function populateReviews(reviews) {
 
 }
 
+ function newReview(companyId) { 
+    reviewSubmitBtn.addEventListener('click', async (e) => {
+        e.preventDefault()
+        const reviewContentInput = document.querySelector('#reviewContentInput')
+        const reviewRatingInput =document.querySelector('#reviewRatingInput')
+        const userId = await localStorage.getItem('userId')
+        const response = await axios.post(`${backendUrl}/reviews/${companyId}/create/${userId}`,{
+            rating: reviewRatingInput.value,
+            content: reviewContentInput.value
+
+        })
+        console.log(response,"newReview works!")
+    })
+}
 
 // REUSABLE FUNCTIONS
 function hideViews() {
