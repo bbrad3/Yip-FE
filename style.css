@@ -6,7 +6,9 @@ body {
 #home {
     border-radius: 1rem;
 }
-
+#reviewForm{
+    margin-bottom: 10px;
+    }
 
 /* .view {
     border: 1px solid green;
