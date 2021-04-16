@@ -25,6 +25,15 @@ const editBusinessImg = document.querySelector('#editBusinessImg')
 const editBusinessDesc = document.querySelector('#editBusinessDesc')
 const editBusinessAddress = document.querySelector('#editBusinessAddress')
 
+const userName = document.querySelector('#userName')
+const userEmail = document.querySelector('#userEmail')
+
+const editUserName = document.querySelector('#editUserName')
+const editUserEmail = document.querySelector('#editUserEmail')
+const editUserPassword = document.querySelector('#editUserPassword')
+const editProfileBtn = document.querySelector('#editProfileBtn')
+const deleteProfileBtn = document.querySelector('#deleteProfileBtn')
+
 const allViews = document.querySelectorAll('.view')
 const homeView = document.querySelector('#home')
 const signupView = document.querySelector('#signup')
@@ -41,6 +50,7 @@ const updateBusinessBtn = document.querySelector('#updateBusinessBtn')
 const editBusinessBtn = document.querySelector('#editBusinessBtn')
 const editBusinessForm = document.querySelector('#editBusinessForm')
 const editUserForm = document.querySelector('#editUserForm')
+const editUserBtn = document.querySelector('#editUserBtn')
 
 
 // NAV LINKS
@@ -227,11 +237,55 @@ async function populateProfile() {
             authorization: userId
         }
     })
-
-    console.log(response);
-
+    // console.log(response);
+    userEmail.innerHTML = response.data.user.email
+    userName.innerHTML = response.data.user.name
 }
 
+editUserBtn.addEventListener('click', () =>{
+     
+       editUserForm.classList.remove('hidden')
+       const userId = localStorage.getItem('userId')
+        editProfileBtn.addEventListener("click",async (e) =>{
+            e.preventDefault()
+           
+            try {
+                const response = await axios.post(`${backendUrl}/users/update/${userId}`,{
+        
+                        name: editUserName.value,
+                        email: editUserEmail.value,
+                        password: editUserPassword.value
+                        
+                }) 
+                console.log(response)
+            } catch (error) {
+                console.log(error)
+            }
+        })
+         deleteProfileBtn.addEventListener('click',async (e)=>{
+             e.preventDefault()
+             
+             const response = await axios.delete(`${backendUrl}/users/delete/${userId}`)
+             console.log(response,"Deleted")
+         })   
+    })
+   
+   
+   
+   
+
+    // const userId = localStorage.getItem('userId')
+    // console.log(userId)
+    // const response = await axios.post(`${backendUrl}/users/update/${userId}`,{
+        
+    //     name: editUserName.value,
+    //     email: editUserEmail.value,
+    //     password: editUserPassword.value
+    // })
+    // console.log('Update Profile response', response)
+    // console.log(editUserName.value)
+
+    
 
 
 // REUSABLE FUNCTIONS

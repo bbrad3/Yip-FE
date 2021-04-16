@@ -89,7 +89,9 @@
     </div>
 
     <div class="view hidden" id="profile">
+        <label class ='profileLable'>Name:</label>
         <p id="userName">UserName</p>
+        <label class ='profileLable'>E-mail:</label>
         <p id="userEmail">email</p>
         <div>
             <!-- user added businesses -->
@@ -98,11 +100,12 @@
 
         <button id="editUserBtn">Edit User</button>
 
-        <form id="editUserForm">
-            <input type="text" placeholder="Your name">
-            <input type="email" placeholder="email">
-            <input type="password" placeholder="password">
-            <button type="submit">Submit</button>
+        <form  class =' hidden' id="editUserForm">
+            <input  id="editUserName" type="text" placeholder="Your name">
+            <input  id="editUserEmail" type="email" placeholder="email">
+            <input  id="editUserPassword" type="password" placeholder="password">
+            <button id ="editProfileBtn">Submit</button>
+            <button id ="deleteProfileBtn">Delete</button>
         </form>
     </div>
 
