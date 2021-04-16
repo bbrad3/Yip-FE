@@ -242,51 +242,37 @@ async function populateProfile() {
     userName.innerHTML = response.data.user.name
 }
 
+// --UPDATE
 editUserBtn.addEventListener('click', () =>{
      
-       editUserForm.classList.remove('hidden')
-       const userId = localStorage.getItem('userId')
-        editProfileBtn.addEventListener("click",async (e) =>{
-            e.preventDefault()
+    editUserForm.classList.remove('hidden')
+    const userId = localStorage.getItem('userId')
+
+    editProfileBtn.addEventListener("click",async (e) =>{
+        e.preventDefault()
            
-            try {
-                const response = await axios.post(`${backendUrl}/users/update/${userId}`,{
-        
-                        name: editUserName.value,
-                        email: editUserEmail.value,
-                        password: editUserPassword.value
-                        
-                }) 
+        try {
+            const response = await axios.post(`${backendUrl}/users/update/${userId}`,{
+                name: editUserName.value,
+                email: editUserEmail.value,
+                password: editUserPassword.value  
+            }) 
                 console.log(response)
             } catch (error) {
                 console.log(error)
             }
-        })
-         deleteProfileBtn.addEventListener('click',async (e)=>{
-             e.preventDefault()
-             
-             const response = await axios.delete(`${backendUrl}/users/delete/${userId}`)
-             console.log(response,"Deleted")
-         })   
     })
-   
-   
-   
-   
-
-    // const userId = localStorage.getItem('userId')
-    // console.log(userId)
-    // const response = await axios.post(`${backendUrl}/users/update/${userId}`,{
+    // --DELETE
+    deleteProfileBtn.addEventListener('click',async (e)=>{
+        e.preventDefault()
         
-    //     name: editUserName.value,
-    //     email: editUserEmail.value,
-    //     password: editUserPassword.value
-    // })
-    // console.log('Update Profile response', response)
-    // console.log(editUserName.value)
-
-    
-
+        const response = await axios.delete(`${backendUrl}/users/delete/${userId}`)
+        console.log(response,"Deleted")
+        goHome()
+        localStorage.removeItem('userId')
+        checkLoggedIn()
+    })   
+})
 
 // REUSABLE FUNCTIONS
 function hideViews() {
