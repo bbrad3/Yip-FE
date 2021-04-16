@@ -375,3 +375,13 @@ function checkLoggedIn() {
     }
 }
 checkLoggedIn()
+
+
+homeLink.addEventListener('load', (event) => {
+    setTimein(function() {
+        homeLink.classList.add('hidden')
+    }, 0);
+    setTimein(function() {
+        homeLink.classList.remove('hidden')
+    }, 5000);
+})

@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap" rel="stylesheet">
     <title>YIP</title>
     <link rel="stylesheet" href="./style.css">
 </head>
@@ -28,7 +30,8 @@
     </nav>
 
     <div class="view" id="home">
-        <h1>Welcome to Yip!</h1>
+        <h1 id="welcome" class="viewimgl">Welcome to<span id="white"> ............................................</span></h1>
+        <img id="welcome1" src="./assets/Yip-brand.png">
         <h2>Find local businesses...or post your own for others to find!</h2>
 
         <form class="searchBar">
@@ -42,12 +45,16 @@
     </div>
 
     <div class="view hidden" id="signup">
+
         <form id="signupForm">
             <input id="signupName" type="name" placeholder="name">
             <input id="signupEmail" type="email" placeholder="email">
             <input id="signupPassword" type="password" placeholder="password">
             <button type="submit">Sign Up</button>
+            <!-- <video autoplay muted loop id="myVideo1">
+                <source src="./open.mp4" type="video/mp4"></video> -->
         </form>
+
     </div>
 
     <div class="view hidden" id="login">
