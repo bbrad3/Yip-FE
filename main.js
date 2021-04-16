@@ -227,7 +227,7 @@ async function populateProfile() {
             authorization: userId
         }
     })
-    console.log(response);
+    console.log(response); 
 }
 
 // REUSABLE FUNCTIONS
