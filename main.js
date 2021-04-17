@@ -54,7 +54,6 @@ const editUserBtn = document.querySelector('#editUserBtn')
 const reviewSubmitBtn = document.querySelector('#reviewSubmitBtn')
 const addBusiness = document.querySelector('#addBusiness')
 
-
 const reviewContainer = document.querySelector('#reviewContainer')
 
 
@@ -215,7 +214,6 @@ async function checkAuthorization(company) {
                 authorization: userId
             }
         })
-        // console.log('checkAuth response', response.data.user.id, company.userId);
         if(company.userId === response.data.user.id && userId !== null){
             console.log('super nested');
             editBusinessBtn.classList.remove('hidden')
@@ -257,7 +255,6 @@ function fillInEditBusinessForm(data) {
     })
 }
 
-
 //---Create Business---//
 
 addBusiness.addEventListener('click', () => {
@@ -280,7 +277,6 @@ document.getElementById('newBusinessBtn').addEventListener('click', async() => {
 
 
 })
-
 
 // PROFILE
 // --READ
@@ -327,7 +323,6 @@ editUserBtn.addEventListener('click', () => {
         checkLoggedIn()
     })
 })
-
 
 //-- Business Reviews --//
 
@@ -394,7 +389,6 @@ function checkLoggedIn() {
 }
 checkLoggedIn()
 
-
 homeLink.addEventListener('load', (event) => {
     setTimein(function() {
         homeLink.classList.add('hidden')
@@ -403,3 +397,4 @@ homeLink.addEventListener('load', (event) => {
         homeLink.classList.remove('hidden')
     }, 5000);
 })
+

@@ -10,8 +10,6 @@
     <title>YIP</title>
     <link rel="stylesheet" href="./style.css">
 </head>
-
-
 <body>
 
     <nav id="navBar">
@@ -29,19 +27,24 @@
         </div>
     </nav>
 
+    <div id="spacer"></div>
+
     <div class="view" id="home">
-        <h1 id="welcome" class="viewimgl">Welcome to<span id="white"> ............................................</span></h1>
-        <img id="welcome1" src="./assets/Yip-brand.png">
-        <h2>Find local businesses...or post your own for others to find!</h2>
+        <div id="welcomeDiv">
+            <h1 id="welcome" class="viewimgl">Welcome to<span id="white"> ............................................</span></h1>
+            <img id="welcome1" src="./assets/Yip-brand.png">
+            <h2>Find local businesses...or post your own for others to find!</h2>
+        </div>
 
         <form class="searchBar">
             <input type="text" placeholder="search businesses">
             <button type="submit">Search</button>
             <video autoplay muted loop id="myVideo">
-                <source src="./video.mp4" type="video/mp4"></video>
+                <source src="./video.mp4" type="video/mp4">
+            </video>
         </form>
 
-        <p id="topBusiness "> Top Reviewed Businesses</p>
+        <!-- <p id="topBusiness "> Top Reviewed Businesses</p> -->
     </div>
 
     <div class="view hidden" id="signup">
@@ -51,8 +54,6 @@
             <input id="signupEmail" type="email" placeholder="email">
             <input id="signupPassword" type="password" placeholder="password">
             <button type="submit">Sign Up</button>
-            <!-- <video autoplay muted loop id="myVideo1">
-                <source src="./open.mp4" type="video/mp4"></video> -->
         </form>
 
     </div>
@@ -66,10 +67,6 @@
     </div>
 
     <div class="view hidden" id="allBusinesses">
-        <form class="searchBar">
-            <input type="text" placeholder="search businesses">
-            <button type="submit">Search</button>
-        </form>
         <div id="businessesContainer">List of business</div>
     </div>
 
@@ -77,7 +74,9 @@
 
         <h2 id='singleBusinessName'>Business name</h2>
         <p id='singleBusinessType'>type</p>
-        <img id='singleBusinessImg' src="https://www.nytaxreview.com/wp-content/uploads/2020/02/nyc-storefront-vacancy-1200x675.jpg">
+        <div id="singleBusinessImgDiv">
+            <img id='singleBusinessImg' src="https://www.nytaxreview.com/wp-content/uploads/2020/02/nyc-storefront-vacancy-1200x675.jpg">
+        </div>
         <p id='singleBusinessDescription'>description</p>
         <address id='singleBusinessAddress'>address</address>
 
