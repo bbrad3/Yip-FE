@@ -214,7 +214,6 @@ async function checkAuthorization(company) {
                 authorization: userId
             }
         })
-        // console.log('checkAuth response', response.data.user.id, company.userId);
         if(company.userId === response.data.user.id && userId !== null){
             console.log('super nested');
             editBusinessBtn.classList.remove('hidden')
