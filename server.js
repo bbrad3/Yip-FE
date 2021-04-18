@@ -15,7 +15,7 @@ app.use(async (req, res, next) => {
         await replaceInFile({
           files: filepath,
           from: 'http://localhost:3001',
-          to: 'https://.herokuapp.com'
+          to: 'https://yip-back-end.herokuapp.com'
         })
       }
       next()
