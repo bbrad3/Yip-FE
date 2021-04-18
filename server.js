@@ -9,15 +9,20 @@ const morgan = require('morgan')
 // MIDDLEWARE
 app.use(express.json())
 app.use(morgan('dev'))
-// app.use((req, res, next) => { // HOPE THIS WORKS
-//     if(localStorage.getItem('userId')){
-//         req.headers.authorization = localStorage.getItem('userId')
-//         console.log('testing', req.headers);
-//         next()
-//     }else{
-//         next()
-//     }
-// })
+app.use(async (req, res, next) => {
+    try {
+      if (process.env.NODE_ENV === 'production') {
+        await replaceInFile({
+          files: filepath,
+          from: 'http://localhost:3001',
+          to: 'https://.herokuapp.com'
+        })
+      }
+      next()
+    } catch (error) {
+      console.error('Replace-in-file error:', error)
+    }
+  })
 
 // ROUTES
 app.get('/', (req, res) => {
