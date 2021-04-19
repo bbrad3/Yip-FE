@@ -55,6 +55,8 @@ const reviewSubmitBtn = document.querySelector('#reviewSubmitBtn')
 const addBusiness = document.querySelector('#addBusiness')
 
 const reviewContainer = document.querySelector('#reviewContainer')
+const nameSearchBar = document.getElementById('nameSearchBar')
+const searchBusiness = document.getElementById('searchBusiness')
 
 
 // NAV LINKS
@@ -136,6 +138,46 @@ function logoutUser() {
     goHome()
 }
 
+
+// -- searchbar
+
+document.querySelector('#searchBTN').addEventListener('click', async(e) => {
+    e.preventDefault()
+    const name = await nameSearchBar.value
+        // console.log(name);
+    try {
+        const response = await axios.get(`${backendUrl}/companies/${name}`)
+        console.log(response.data.oneCompany);
+
+        let sbusinessImg = document.createElement('img')
+        sbusinessImg.setAttribute('class', 'businessImg')
+        sbusinessImg.setAttribute('src', response.data.oneCompany.image)
+        searchBusiness.append(sbusinessImg)
+
+        let sBusinessName = document.createElement('h3')
+        sBusinessName.setAttribute('class', 'sBusinessName')
+        sBusinessName.innerHTML = response.data.oneCompany.name
+        searchBusiness.append(sBusinessName)
+
+        let sBusinessType = document.createElement('h3')
+        sBusinessType.setAttribute('class', 'sBusinessName')
+        sBusinessType.innerHTML = response.data.oneCompany.type
+        searchBusiness.append(sBusinessType)
+
+        let detailButton = document.createElement('button')
+        detailButton.setAttribute('id', 'detailButton')
+        detailButton.innerHTML = 'See Details'
+        searchBusiness.append(detailButton)
+
+        detailButton.addEventListener('click', popSingleBus(response.data.oneCompany.name))
+
+    } catch (error) {
+        console.log(' can not find name');
+    }
+
+
+})
+
 // BUSINESS
 async function populateCompanies() {
     const response = await axios.get(`${backendUrl}/companies/all`)
@@ -173,12 +215,17 @@ async function populateCompanies() {
 }
 
 // --SINGLE BUSINESS
-businessesContainer.addEventListener('click', async(event) => {
-    // console.log(event.target.children[1].children[0].innerHTML)
-    // console.log(event.target)
+businessesContainer.addEventListener('click', popSingleBus)
 
-    if (event.target.classList.contains('businessDiv')) {
-        const businessName = event.target.children[1].children[0].innerHTML
+async function popSingleBus(event) {
+    if (event.target.classList.contains('businessDiv') ||
+        typeof(event) === String) {
+        let businessName = null
+        if (event.target.children) {
+            businessName = event.target.children[1].children[0].innerHTML
+        } else if (typeof(event) === String) {
+            businessName = event
+        }
 
         hideViews()
         showOneView.classList.remove('hidden')
@@ -200,26 +247,26 @@ businessesContainer.addEventListener('click', async(event) => {
         populateReviews(response.data.foundReview)
         newReview(response.data.oneCompany.id)
     }
+}
 
-})
 async function checkAuthorization(company) {
     const userId = localStorage.getItem('userId')
     console.log(userId);
     let response = null
 
-    if(company !== false && userId.length > 20) { // only run if user is logged in properly && company not false
+    if (company !== false && userId.length > 20) { // only run if user is logged in properly && company not false
         console.log('not null', userId, company);
         response = await axios.get(`${backendUrl}/users/findOne`, {
             headers: {
                 authorization: userId
             }
         })
-        if(company.userId === response.data.user.id && userId !== null){
+        if (company.userId === response.data.user.id && userId !== null) {
             console.log('super nested');
             editBusinessBtn.classList.remove('hidden')
         }
     }
-    if(userId.length > 20 && company === false) { // !== null/undefined was not working
+    if (userId.length > 20 && company === false) { // !== null/undefined was not working
         console.log('here', company)
         document.querySelector('#reviewForm').classList.remove('hidden')
     }
@@ -397,4 +444,3 @@ homeLink.addEventListener('load', (event) => {
         homeLink.classList.remove('hidden')
     }, 5000);
 })
-

@@ -10,6 +10,7 @@
     <title>YIP</title>
     <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
 
     <nav id="navBar">
@@ -37,13 +38,13 @@
         </div>
 
         <form class="searchBar">
-            <input type="text" placeholder="search businesses">
-            <button type="submit">Search</button>
+            <input id="nameSearchBar" type="text" placeholder="search businesses">
+            <button type="submit" id="searchBTN">Search</button>
             <video autoplay muted loop id="myVideo">
                 <source src="./video.mp4" type="video/mp4">
             </video>
         </form>
-
+        <div id="searchBusiness"></div>
         <!-- <p id="topBusiness "> Top Reviewed Businesses</p> -->
     </div>
 
@@ -66,11 +67,14 @@
         </form>
     </div>
 
+
+
     <div class="view hidden" id="allBusinesses">
         <div id="businessesContainer">List of business</div>
     </div>
 
     <div class="view hidden" id="oneBusiness">
+
 
         <h2 id='singleBusinessName'>Business name</h2>
         <p id='singleBusinessType'>type</p>
@@ -80,15 +84,16 @@
         <p id='singleBusinessDescription'>description</p>
         <address id='singleBusinessAddress'>address</address>
 
+
         <form class="hidden" id="reviewForm">
             <input id="reviewContentInput" type='text' cols='20' rows='10'>
             <select id="reviewRatingInput" name='reviewRatingInput'>
-                <option value="1">1</option>    
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
+                    <option value="1">1</option>    
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
             <button class="" id="reviewSubmitBtn">submit</button>
         </form>
 
@@ -100,22 +105,32 @@
             </div>
         </div>
 
-        <button class="hidden" id="editBusinessBtn">Edit Business</button>
 
+        <button class="hidden" id="editBusinessBtn">Edit Business</button>
         <form id="editBusinessForm">
             <input id="editBusinessName" type="text" placeholder="Business name">
             <input id="editBusinessImg" type="url" placeholder="img url">
             <select name="businessType" id="editBusinessType">
-                <option value="retail">Retail</option>  
-                <option value="resturant">Resturant</option>  
-                <option value="hardware">Hardware</option>     
-            </select>
+                    <option value="retail">Retail</option>  
+                    <option value="resturant">Resturant</option>  
+                    <option value="hardware">Hardware</option>     
+                </select>
             <input id="editBusinessAddress" type="text" placeholder="address">
             <textarea id="editBusinessDesc" name="description" id="descriptionInfo" cols="30" rows="10"></textarea>
             <button class="deleteBtn" id="deleteBusinessBtn">Delete</button>
             <button id="updateBusinessBtn" type="submit">Submit</button>
         </form>
+
     </div>
+
+
+
+
+
+
+
+
+
 
     <div class="view hidden" id="profile">
         <label class='profileLable'>Name:</label>
