@@ -20,6 +20,7 @@ app.get('/', (req, res) => {
 app.get('/main.js', (req, res) => {
     const filepath = path.join(__dirname, './main.js')
     if (process.env.NODE_ENV === 'production') {
+        console.log('replacing...')
         replaceInFile({
         files: filepath,
         from: 'http://localhost:3001',
