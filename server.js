@@ -5,7 +5,6 @@ const routesReport = require('rowdy-logger').begin(app)
 const path = require('path')
 const replaceInFile = require('replace-in-file')
 const morgan = require('morgan')
-const { async } = require('regenerator-runtime')
 
 let filepath
 
@@ -28,8 +27,7 @@ app.get('/main.js', (req, res) => {
         to: 'https://yip-back-end.herokuapp.com'
         })
     } else {
-    console.error('Replace-in-file error')
-    next()
+        console.error('Replace-in-file error')
     }
     res.sendFile(filepath)
 })
