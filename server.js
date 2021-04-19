@@ -6,7 +6,6 @@ const path = require('path')
 const replaceInFile = require('replace-in-file')
 const morgan = require('morgan')
 
-let filepath
 
 // MIDDLEWARE
 app.use(express.json())
@@ -14,12 +13,12 @@ app.use(morgan('dev'))
 
 // ROUTES
 app.get('/', (req, res) => {
-    filepath = path.join(__dirname, './index.html')
+    const filepath = path.join(__dirname, './index.html')
     res.sendFile(filepath)
 })
     
 app.get('/main.js', (req, res) => {
-    filepath = path.join(__dirname, './main.js')
+    const filepath = path.join(__dirname, './main.js')
     if (process.env.NODE_ENV === 'production') {
         replaceInFile({
         files: filepath,
@@ -33,7 +32,7 @@ app.get('/main.js', (req, res) => {
 })
     
 app.get('/style.css', (req, res) => {
-    filepath = path.join(__dirname, './style.css')
+    const filepath = path.join(__dirname, './style.css')
     res.type('css').sendFile(filepath)
 })
 
