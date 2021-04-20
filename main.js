@@ -102,6 +102,7 @@ loginForm.addEventListener('submit', async(e) => {
         }
     } catch (error) {
         console.log('Can not login user')
+        alert('Can not login user')
     }
 })
 
