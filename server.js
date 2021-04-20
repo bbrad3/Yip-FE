@@ -5,12 +5,12 @@ const routesReport = require('rowdy-logger').begin(app)
 const path = require('path')
 const replaceInFile = require('replace-in-file')
 const morgan = require('morgan')
-const { async } = require('regenerator-runtime')
 
 
 // MIDDLEWARE
 app.use(express.json())
 app.use(morgan('dev'))
+app.use(express.static('assets'))
 
 // ROUTES
 app.get('/', (req, res) => {
@@ -29,7 +29,7 @@ app.get('/main.js', async (req, res) => {
         to: 'https://yip-back-end.herokuapp.com'
         })
     }
-    
+
     res.sendFile(filepath)
 })
     
